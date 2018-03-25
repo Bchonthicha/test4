@@ -1,0 +1,16 @@
+<div *ngIf="currentFileUpload" class="progress" style="width:400px">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      aria-valuemin="0" aria-valuemax="100"
+      [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
+  </div>
+  
+  <label class="btn btn-default"> <input type="file"
+    (change)="selectFile($event)">
+  </label>
+  
+  <button class="btn btn-success" [disabled]="!selectedFiles"
+    (click)="upload()">Upload</button>
+
+    <!-- <img src="https://firebasestorage.googleapis.com/v0/b/onlinequizproject-cmu57.appspot.com/o/uploads%2Fpexels-photo-843266.jpeg?alt=media&token=aa358367-96f1-4d23-bc80-518205a4b008" width="350" height="200"> -->

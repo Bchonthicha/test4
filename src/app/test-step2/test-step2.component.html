@@ -1,0 +1,45 @@
+<table class="table">
+    <!-- <thead class="thead">
+          <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>index</th>
+              <th></th>
+          </tr>
+      </thead> -->
+    <tbody>
+      <tr *ngFor="let question_item of question_list_display ;let index = index;let i = index;" class="hoverTable">
+          <td width="10px" align="center"><b> {{i+1}}) </b></td>
+        <td>
+  
+          <!-- tools box -->
+          <div class="pull-right box-tools">
+            <button type="button" class="btn btn-default btn-sm" (click)="moveUp(question_item, index);">
+              <i class="fa fa-arrow-up"></i>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" (click)="moveDown(question_item, index);">
+              <i class="fa fa-arrow-down"></i>
+            </button>
+          </div>
+          <!-- content question -->
+          <div class="item"> 
+            <b>{{question_item.question}} ? </b>
+
+           <p class="display_question_item" *ngFor="let itemChoice of question_item.choice;let i = index" >
+   
+               <!-- {{question_item.choice[0]}} -->
+              {{i+1}}.  {{itemChoice}}
+           </p>
+            <!-- <br> name: {{question_item.name}} -->
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- button Back and next-->
+<a [routerLink]="'/dashboard/test'">
+  <button type="submit" class="btn btn-danger">Back</button>
+</a>
+<a [routerLink]="'/dashboard/test/test-step3'">
+  <button type="submit" class="btn btn-success"(click)="StartSelectQuestion()">Next</button>
+</a>

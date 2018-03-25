@@ -1,0 +1,42 @@
+<div class="test-step1">
+  <div class="content">
+    <form #SelectTestForm="ngForm">
+      <!-- Select Category -->
+      <div class="form-group">
+        <label for="exampleSelect1">Catagory select</label>
+        <select class="form-control" id="SelectCategory" name="SelectCategory" (ngModelChange)="onChange($event)" [(ngModel)]="SelectThisCategory">
+          <option value="" [selected]="isSelected"> ----Please choose one---- </option>
+          <option *ngFor="let data of arrayVal_cate; let i = index" [ngValue]="i" [selected]="isSelected">{{data?.category_name}}</option>
+        </select>
+      </div>
+      <!-- {{SelectThisCategory}} -->
+      <!-- Select Topic -->
+      <div class="form-group">
+        <label for="exampleSelect1">Topic select</label>
+        <select class="form-control" id="SelectTopic" name="SelectTopic" (ngModelChange)="numQuestion($event)" [(ngModel)]="SelectTopic">
+          <option *ngFor="let item of arrayTopic_name; let i = index" [ngValue]="i" [selected]="isSelected">
+            {{item.val()}} &nbsp;&nbsp;({{display_arr_choice_type[i]}})</option>
+        </select>
+      </div>
+
+      <!-- Select Number of items -->
+      <div class="form-group">
+        <label for="exampleTextarea">Number of items</label>
+        <!-- {{numOfitem}} -->
+        <select class="form-control" id="SelectNumofItem" name="SelectNumofItem" [(ngModel)]="SelectNumofItem">
+          <option *ngFor="let number of  array_numOfitem">{{number}}</option>
+        </select>
+      </div>
+
+      <!-- Input Description -->
+      <div class="form-group">
+        <label for="exampleTextarea">Description</label>
+        <textarea class="form-control" id="InputDescription" rows="2" name="InputDescription" [(ngModel)]="InputDescription"></textarea>
+      </div>
+      <button type="submit" class="btn btn-danger" (click)="clearTest1()">Clear</button>
+      <a [routerLink]="'/dashboard/test/test-step2'">
+        <button type="submit" class="btn btn-success" (click)="StartSelectTest(SelectTestForm)">Next</button>
+      </a>
+    </form>
+  </div>
+</div>

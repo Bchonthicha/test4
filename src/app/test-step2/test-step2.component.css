@@ -1,0 +1,16 @@
+.item {
+  background-color: antiquewhite;
+  padding: 10px;
+}
+
+ td {
+  background-color: antiquewhite;
+  border-bottom: 20px solid white;
+}
+.item:hover {
+    background-color: #ffd1b3;
+  }
+  .display_question_item{
+    margin-top: 20px;
+    margin-left: 30px;
+  }

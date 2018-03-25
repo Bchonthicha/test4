@@ -1,0 +1,183 @@
+<div class="student-list">
+  <div class="box box-info">
+    <div class="container">
+      <!-- Trigger the modal with a button New -->
+      <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" (click)="StartAddStd()">
+        <i class="fa fa-user-plus"></i> ADD NEW STUDENT</button>
+      <!-- Modal ADD-->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog  modal-md">
+          <!-- Modal size sm,md-->
+          <!-- Modal content-->
+          <div class="modal-content">
+            <form (ngSubmit)="addNewStudent()" #NewStdForm="ngForm">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">ADD NEW STUDENT</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Student ID:</label>
+                  <input type="text" class="form-control" id="StdID" name="student_id" ngModel [(ngModel)]="stu_idStart">
+                </div>
+                <div class="form-group">
+                  <label>Student Name:</label>
+                  <input type="text" class="form-control" id="StdName" name="student_name" ngModel [(ngModel)]="stu_nameStart">
+                </div>
+                <!-- upload file -->
+                <div *ngIf="currentFileUpload" class="progress" style="width:400px">
+                  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                    {{progress.percentage}}%</div>
+                </div>
+
+                <label class="btn btn-default">
+                  <input type="file" (change)="selectFile($event)" style="width:1000px">
+                </label>
+
+                <!-- <button class="btn btn-success" [disabled]="!selectedFiles"
+                      (click)="upload()">Upload</button> -->
+                <!--  -->
+              </div>
+
+            </form>
+            <div class="modal-footer">
+              <!-- <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" data-dismiss="modal"> -->
+              <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" (click)="addNewStudent(NewStdForm);" data-dismiss="modal">
+                <span class="glyphicon glyphicon-ok-sign"></span>ADDD</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display student list -->
+      <!-- table -->
+      <div class="row">
+        <div class="col-md-10">
+          <div class="table-responsive">
+            <!-- table std list -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    #
+                    <!-- <input type="checkbox" class="checkthis" /> -->
+                    <!-- <input type="checkbox" id="checkall" /> -->
+                  </th>
+                  <th>Picture</th>
+                  <th scope="col">Student ID</th>
+                  <th scope="col">Student Name</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of dataObj | async ; let i=index  let index=index">
+                  <td> {{i+1}} </td>
+                  <td>
+                    <img src= {{data.url}} width="60 px" class="picture_show ">
+                  </td>
+                  <td>{{data?.student_id}}</td>
+                  <td>{{data?.student_name}}</td>
+
+                  <td>
+                    <p data-placement="top" data-toggle="tooltip" title="Edit">
+                      <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" (click)="setdataEdit(data)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                      </button>
+                    </p>
+                  </td>
+                  <td>
+                    <p data-placement="top" data-toggle="tooltip" title="Delete">
+                      <!-- <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" type="button" (click)="delStd(data)"> -->
+                      <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="setdataDelete(data)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- edit modal -->
+      <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+              <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+            </div>
+            <!-- ////// -->
+            <div class="modal-body">
+              <form (ngSubmit)="setdataEdit(EditForm)" #EditForm="ngForm">
+                <div class="form-group">
+                  <label>Student ID:</label>
+                  <!-- disabled or readonly when make a text input non-editable -->
+                  <input class="form-control " type="text" id="StdIDEdit" name="student_id" ngModel [(ngModel)]="stu_id" disabled>
+                  <!-- <input class="form-control " type="text" id = "StdIDEdit" name="Student_id" > -->
+                </div>
+                <div class="form-group">
+                  <label>Student Name:</label>
+                  <input class="form-control " type="text" id="StdNameEdit" name="student_name" ngModel [(ngModel)]="stu_name">
+                </div>
+              </form>
+              <!-- upload file -->
+              <div *ngIf="currentFileUpload" class="progress" style="width:400px">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                  aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                  {{progress.percentage}}%</div>
+              </div>
+
+              <label class="btn btn-default">
+                <input type="file" (change)="selectFile($event)" style="width:1000px">
+              </label>
+
+              <!-- <button class="btn btn-success" [disabled]="!selectedFiles"
+                            (click)="upload()">Upload</button> -->
+              <!--  -->
+
+            </div>
+
+            <div class="modal-footer ">
+              <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" (click)="EditStd(stu_id,stu_name)" data-dismiss="modal">
+                <span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+      <!-- delete modal -->
+      <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+              <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+            </div>
+            <div class="modal-footer ">
+              <button type="button" class="btn btn-success" type="button" (click)="delStd()" data-dismiss="modal">
+                <span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove"></span> No</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+    </div>
+  </div>
+</div>

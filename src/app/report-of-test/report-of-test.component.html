@@ -1,0 +1,81 @@
+ <div class="report-test"> 
+  <select class="form-control form-control-lg" data-live-search="true">
+    <option>เทคโนโลยเพื่อการสื่อสาร</option>
+    <option>โลกและอวกาศ</option>
+    <option>จิตวิทยาชุมชน</option>
+  </select>
+  <div class="content">
+
+    <div class="report-head">
+      <p>
+        <b>Topic Name: </b>
+        <span>เทคโนโลยเพื่อการสื่อสาร</span>
+      </p>
+      <p>
+        <b>Max Score: </b>
+        <span>50</span>
+      </p>
+      <p>
+        <b>Average Score: </b>
+        <span>45</span>
+      </p>
+    </div>
+
+    <div class="report-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td colspan='5' align="center">
+                        <div style="display: block">
+                            <canvas baseChart
+                            [data]="lineChartData"
+                            [labels]="lineChartLabels"
+                            [options]="lineChartOptions"
+                            [chartType]="lineChartType"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)"></canvas>
+                            <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+                          </div>
+                    </td>
+                  </tr>
+              <tr>
+                <th> #
+                </th>
+                <th scope="col">Student ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                1
+                </td>
+                <td>570510637</td>
+                <td>ชลธิชา บัวตูม</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>
+           2
+                </td>
+                <td>570510638</td>
+                <td> มารี แมวเหมี้ยว</td>
+                <td>45</td>
+              </tr>
+              <tr>
+                <td>
+             3
+                </td>
+                <td>570510639</td>
+                <td>นัทชา ใจดี</td>
+                <td>40</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <button type="button" class="btn btn-primary btn-md" style="width: 100%;">
+        <span class="	glyphicon glyphicon-print"></span> Print</button>
+  </div>
+</div>

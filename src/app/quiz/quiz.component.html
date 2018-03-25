@@ -1,0 +1,79 @@
+<div class="quiz">
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="row header_test_left">
+    
+        <div class="col-md-9">
+            <h3>
+                <b> Topic:</b>  &nbsp; &nbsp; {{topic_name_display}}
+              </h3>
+              <div class="btnn-header">
+                  <button type="submit" class="btn btn-warning btn-md" style="width: 45%;" (click)="PuaseTest()">
+                    <span class="glyphicon glyphicon-pause"></span> Puase</button>
+                  <button type="submit" class="btn btn-danger btn-md" style="width: 45%;" (click)="SkipQuestion()">
+                    <span class="	glyphicon glyphicon-step-forward"></span> Skip</button>
+                </div>
+
+        </div>
+        <div class="col-md-3 header_numOfTest_left">
+            <h1>
+                {{doing_percent}}%
+              </h1>
+              <h4>
+                {{current_num}}/{{total_num_cal}} ข้อ
+              </h4>
+
+        </div>
+      </div>
+      <div class="row body_test_left">
+        <div class="content-body ">
+            <h3>  <b> ข้อที่ {{current_num +1}}:</b> {{question_display2}} </h3>
+            <p *ngFor="let data of choice_display ; let i=index">
+                <br><h4>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;({{i+1}}.)&nbsp;{{data}}</h4>
+              </p>
+             <!-- test -->
+             <br>
+        <div>
+          รหัส:<input type="text" name="testttname1" id="testttname1"[(ngModel)]="tesssttext1">
+          คำตอบ:<input type="text" name="testttname2" id="testttname2"[(ngModel)]="tesssttext2">
+        <button type="submit" class="btn-warning btn-md" style="width: 25%;"(click)="TestStuList()">
+         TestStuList </button>
+        </div>
+      <!-- test end -->
+        </div>
+        <br>
+      <button type="submit" class="btn btn-info btn-md" style="width: 25%;" (click)="inputAnswer()">
+        <span class="glyphicon glyphicon-open"></span> Input Answer</button>
+      <button type="submit" class="btn btn-success btn-md" style="width: 30%;"(click)="ProcessAnswer()">
+        <span class="	glyphicon glyphicon glyphicon-refresh" ></span> Process Answer </button>
+        <button type="submit" class="btn btn-primary btn-md" style="width: 25%;"(click)="NextQuestion()">
+            <span class="	glyphicon glyphicon-forward" ></span> Next </button>
+      </div>
+    </div>
+    <div class="col-md-4 display_list_right " id="table-wrapper">
+      <div class="tableAllList tests" id="table-scroll">
+        <table class="table table-striped test2 ">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pic.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+                <th scope="col">Ans.</th>
+              </tr>
+            </thead>
+            <tbody class="TableList">
+              <tr   *ngFor="let data of array_testList ; let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td> <img src= {{data.url}} width="40" class="picture_show"></td> 
+                <td>{{data.student_name}}</td>
+                <td>{{data.score}}/{{total_num_cal}}</td>
+                <td>{{data.answer}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>

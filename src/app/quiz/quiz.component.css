@@ -1,0 +1,80 @@
+ .quiz {
+  margin: 5px;
+}
+.display_list_right{
+  padding: 10px;
+  background-color: #e6ffee;
+  height: 599px;
+}
+.header_test_left{
+  background: #ffc2b3;
+  padding: 10px;
+  height: 130px;
+}
+.body_test_left{
+  padding: 10px;
+  background-color: #ffe6e6;
+}
+.content-body {
+  height: 395px;
+  padding: 20px;
+}
+.header_numOfTest_left{
+  background-color: bisque;
+  height: 110px;
+}
+.btnn-header {
+  margin: 25px;
+}
+.btn {
+  margin-right: 4.5%;
+}
+#h3 {
+  margin: 30px;
+}
+.picture_show:hover{
+  cursor: pointer;
+  width: 100px;
+}
+/* .TableList{
+  font-size: 12px;
+  max-height: 350px;
+}
+.tableAllList2{
+  max-height: 350px;
+  table-layout: fixed;
+}
+.test{
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  min-width: 300px;
+}
+.test2{
+  overflow: auto;
+  max-height: 500px;
+} */
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:590px;
+  overflow:auto;  
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:100%;
+
+}
+/* #table-wrapper table * {
+  background:yellow;
+  color:black;
+} */
+#table-wrapper table thead th .text {
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}

@@ -1,0 +1,71 @@
+<body>
+  <div class="container">
+
+    <div class="info">
+      <h1>Online Quiz System for Multiple Choice and Short Answer Question</h1>
+    </div>
+
+  </div>
+
+  <div class="form">
+
+    <div class="thumbnail">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg" />
+    </div>
+
+    <form class="login-form">
+      <input type="email" placeholder="email" class="form-control" name="emailLogin" [(ngModel)]="emailSignup" />
+      <input type="password" placeholder="password" class="form-control" name="passwordLogin" [(ngModel)]="passwordSignup">
+
+      <!-- <a [routerLink]="'/dashboard'"><input type ="submit" class ="button" value="login"></a> -->
+      <button type="submit" class="button btn btn-primary" (click)="login()">
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        เข้าสู่ระบบ
+      </button>
+      <div class="col-6 text-center signup-text">
+        <a class="text-muted" [routerLink]="['/signup']">
+          สมัครสมาชิกใหม่ ?
+        </a>
+      </div>
+    </form>
+  </div>
+</body>
+<!-- <div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header text-center text-white bg-dark">
+        เข้าสู่ระบบ
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" name="name" [(ngModel)]="emailSignup">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" name="eiei" [(ngModel)]="passwordSignup">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 text-left">
+              <a class="text-muted" [routerLink]="['/signup']">
+                สมัครสมาชิกใหม่ ?
+              </a>
+            </div>
+            <div class="col-6 text-right">
+              <button type="submit" class="btn btn-primary" (click)="login()">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                เข้าสู่ระบบ
+              </button>
+              <button type="submit" class="btn btn-primary" (click)="logout()">Log Out</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->

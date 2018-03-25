@@ -1,0 +1,43 @@
+<!-- <select class="form-control form-control-lg" data-live-search="true">
+  <option>Group1</option>
+  <option>Group2</option>
+  <option>Group3</option>
+</select> -->
+
+  <label for="exampleSelect1">Group select</label>
+  <select class="form-control" id="SelectGroup" name="SelectGroup" (ngModelChange)="onChange($event)" [(ngModel)]="SelectThisGroup">
+    <option value="" [selected]="isSelected"> ----Please choose one---- </option>
+    <option *ngFor="let data of arrayVal_Group; let i = index" [ngValue]="i" [selected]="isSelected">{{data?.group_name}}</option>
+  </select>
+
+
+<div class="selectStd-body">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th> <input type="checkbox" class="checkthis" [(ngModel)]="selectedAll" (change)="selectAll();" />
+          <!-- <input type="checkbox" id="checkall" /> -->
+        </th>
+        <th scope="col">Student ID</th>
+        <th scope="col">Student Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student_item of std_list_display" >
+        <td>
+          <input type="checkbox" class="checkthis" [(ngModel)]="student_item.selected" (change)="checkIfAllSelected();"/>
+        </td>
+        <td>{{student_item.student_id}}</td>
+        <td>{{student_item.student_name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a [routerLink]="'/dashboard/test/test-step2'">
+  <button type="submit" class="btn btn-danger">Back</button>
+</a>
+<!-- <a [routerLink]="'/dashboard/test/quiz'"> -->
+ <button type="submit" class="btn btn-success"  (click)="StartSelectStudent()">Let Go!</button> 
+  <!-- <button type="submit" class="btn btn-success">Let Go!</button> -->
+<!-- </a> -->
